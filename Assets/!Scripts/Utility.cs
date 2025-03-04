@@ -1,16 +1,9 @@
-using UnityEngine;
+using System;
+using System.Numerics;
 
-public class Utility : MonoBehaviour
+[Serializable]
+public class RotationRestriction
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public Vector3 upperLimits;
+    public Vector3 lowerLimits;
 }

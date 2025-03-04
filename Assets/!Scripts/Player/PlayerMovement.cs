@@ -16,7 +16,7 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Settings")]
     [SerializeField] float movementForce = 1;
-    [SerializeField] Vector2 zRotRestriction;
+    public RotationRestriction rotRestrictions;
 
     private void Start()
     {
