@@ -36,7 +36,7 @@ public class PlayerMovement : MonoBehaviour
 
         CameraTransform = Camera.main.transform;
 
-        rb.AddRelativeForce(Vector3.forward * thrustSpeed.min * 1.5f, ForceMode.Impulse);
+        currentSpeed = thrustSpeed.min * 100f;
     }
 
     private void Update()
