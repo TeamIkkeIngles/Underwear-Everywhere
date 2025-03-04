@@ -18,10 +18,11 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Settings")]
     [SerializeField] Cloth cloth;
-    [SerializeField] float movementSpeed = 30;
 
     [Space]
 
+    [SerializeField] float initialBoost = 100;
+    [SerializeField] float movementSpeed = 30;
     [SerializeField] private MinMax thrustSpeed;
     [SerializeField] private float ThrustMultiplier;
     [SerializeField] private float DragFactor;
@@ -36,7 +37,7 @@ public class PlayerMovement : MonoBehaviour
 
         CameraTransform = Camera.main.transform;
 
-        currentSpeed = thrustSpeed.min * 100f;
+        currentSpeed = thrustSpeed.min * initialBoost;
     }
 
     private void Update()
@@ -58,18 +59,16 @@ public class PlayerMovement : MonoBehaviour
         currentSpeed += mappedPitch * Time.fixedDeltaTime;
         currentSpeed = Mathf.Clamp(currentSpeed, 0, thrustSpeed.max);
 
-        rb.AddRelativeForce(speed);
-
         cloth.externalAcceleration = -rb.linearVelocity;
 
-        //if (rb.linearVelocity.magnitude >= thrustSpeed.min)
-        //{
-        //    rb.AddRelativeForce(speed);
-        //}
-        //else
-        //{
-        //    currentSpeed = 0;
-        //}
+        if (rb.linearVelocity.magnitude >= thrustSpeed.min)
+        {
+            rb.AddRelativeForce(speed);
+        }
+        else
+        {
+            currentSpeed = 0;
+        }
     }
 
     private void ManageRotation()
