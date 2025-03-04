@@ -1389,8 +1389,12 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 4375332236497161687, guid: 5b98bd1283f279b458378a99f4ca5938, type: 3}
+      propertyPath: initialBoost
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4375332236497161687, guid: 5b98bd1283f279b458378a99f4ca5938, type: 3}
       propertyPath: thrustSpeed.max
-      value: 50
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 5180152293481985610, guid: 5b98bd1283f279b458378a99f4ca5938, type: 3}
       propertyPath: m_Name

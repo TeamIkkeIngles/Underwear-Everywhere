@@ -21,7 +21,7 @@ public class PlayerMovement : MonoBehaviour
 
     [Space]
 
-    [SerializeField] float initialBoost = 100;
+    [SerializeField] float initialBoost = 1;
     [SerializeField] float movementSpeed = 30;
     [SerializeField] private MinMax thrustSpeed;
     [SerializeField] private float ThrustMultiplier;
@@ -38,6 +38,7 @@ public class PlayerMovement : MonoBehaviour
         CameraTransform = Camera.main.transform;
 
         currentSpeed = thrustSpeed.min * initialBoost;
+        rb.AddRelativeForce(Vector3.forward * currentSpeed, ForceMode.Impulse);
     }
 
     private void Update()
