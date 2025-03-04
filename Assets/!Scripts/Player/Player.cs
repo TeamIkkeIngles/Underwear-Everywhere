@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
     [HideInInspector] public InputReader input;
     [HideInInspector] public Rigidbody rb;
 
-    private void Start()
+    private void Awake()
     {
         instance = this;
 
