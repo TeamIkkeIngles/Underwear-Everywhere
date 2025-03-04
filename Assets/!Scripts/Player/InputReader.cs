@@ -24,4 +24,16 @@ public class InputReader : MonoBehaviour, InputSystem_Actions.IPlayerActions
     {
         onMove?.Invoke(context.ReadValue<Vector2>());
     }
+
+    public static Vector2 cursorPos = Vector2.zero;
+    public UnityEvent<Vector2> cursorPostion;
+    public void OnLook(InputAction.CallbackContext context)
+    {
+        cursorPos = context.ReadValue<Vector2>();
+        cursorPostion?.Invoke(context.ReadValue<Vector2>());
+    }
+
+    public void OnZoom(InputAction.CallbackContext context)
+    {
+    }
 }
