@@ -21,7 +21,6 @@ public class PlayerMovement : MonoBehaviour
 
     [Space]
 
-    [SerializeField] float initialBoost = 1;
     [SerializeField] float movementSpeed = 30;
     [SerializeField] private MinMax thrustSpeed;
     [SerializeField] private float ThrustMultiplier;
@@ -36,9 +35,6 @@ public class PlayerMovement : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
 
         CameraTransform = Camera.main.transform;
-
-        currentSpeed = thrustSpeed.min * initialBoost;
-        rb.AddRelativeForce(Vector3.forward * currentSpeed, ForceMode.Impulse);
     }
 
     private void Update()
@@ -55,6 +51,8 @@ public class PlayerMovement : MonoBehaviour
     {
         float pitchInRads = transform.eulerAngles.x * Mathf.Rad2Deg;
         float mappedPitch = -Mathf.Sin(pitchInRads) * ThrustMultiplier;
+        float offsetMappedPitch = Mathf.Cos(pitchInRads) * DragFactor;
+
         Vector3 speed = Vector3.forward * currentSpeed;
 
         currentSpeed += mappedPitch * Time.fixedDeltaTime;
@@ -65,11 +63,17 @@ public class PlayerMovement : MonoBehaviour
         if (rb.linearVelocity.magnitude >= thrustSpeed.min)
         {
             rb.AddRelativeForce(speed);
+            rb.linearDamping = Mathf.Abs(offsetMappedPitch);
         }
         else
         {
             currentSpeed = 0;
         }
+    }
+
+    private void OnCollisionStay(Collision collision)
+    {
+        currentSpeed -= 10 * Time.deltaTime;
     }
 
     private void ManageRotation()
