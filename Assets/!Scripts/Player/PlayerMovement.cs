@@ -36,7 +36,7 @@ public class PlayerMovement : MonoBehaviour
 
         cameraTransform = Camera.main.transform;
 
-        currentSpeed = thrustSpeed.max;
+        currentSpeed = thrustSpeed.max / 4;
         rb.AddRelativeForce(Vector3.forward * currentSpeed, ForceMode.Impulse);
     }
 
@@ -55,7 +55,7 @@ public class PlayerMovement : MonoBehaviour
         float pitchInRads = transform.eulerAngles.x * Mathf.Rad2Deg;
         float mappedPitch = -Mathf.Sin(pitchInRads) * ThrustMultiplier;
         float offsetMappedPitch = Mathf.Cos(pitchInRads) * DragFactor;
-        float acceleration = transform.eulerAngles.x >= 300? LowPercent : HighPercent;
+        float acceleration = transform.eulerAngles.x % 360 >= 300? LowPercent : HighPercent;
 
         Vector3 speed = Vector3.forward * currentSpeed;
 
@@ -63,6 +63,8 @@ public class PlayerMovement : MonoBehaviour
         currentSpeed = Mathf.Clamp(currentSpeed, 0, thrustSpeed.max);
 
         cloth.externalAcceleration = -rb.linearVelocity;
+
+        if (rb.linearVelocity == Vector3.zero) return;
 
         if (rb.linearVelocity.magnitude >= thrustSpeed.min)
         {
@@ -73,6 +75,11 @@ public class PlayerMovement : MonoBehaviour
         {
             currentSpeed = 0;
         }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        currentSpeed -= 100;
     }
 
     private void OnCollisionStay(Collision collision)
