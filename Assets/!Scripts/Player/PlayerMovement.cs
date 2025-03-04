@@ -1,6 +1,4 @@
-using System;
 using UnityEngine;
-using UnityEngine.Events;
 
 [RequireComponent(typeof(InputReader))]
 public class PlayerMovement : MonoBehaviour
@@ -9,10 +7,16 @@ public class PlayerMovement : MonoBehaviour
     Player player => Player.instance;
     Rigidbody rb => player.rb;
     Vector3 movementValue;
-    Vector3 movementTorque { get { return new Vector3(
-        movementValue.y * Time.deltaTime, 
-        movementValue.x * Time.deltaTime, 
-        -movementValue.x * Time.deltaTime); } }
+    Vector3 movementTorque
+    {
+        get
+        {
+            return new Vector3(
+        -movementValue.y * Time.deltaTime,
+        0,
+        -movementValue.x * Time.deltaTime);
+        }
+    }
 
     [Header("Settings")]
     [SerializeField] float movementForce = 1;
@@ -21,11 +25,14 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         player.input.onMove.AddListener(Movement);
+        rotRestrictions.startingPosition = transform.eulerAngles;
     }
 
     private void Update()
     {
-        rb.AddForce(transform.forward * 10 * Time.deltaTime);
+        rb.AddForce(-transform.forward * 100 * Time.deltaTime);
+
+        transform.eulerAngles = rotRestrictions.RestrictValue(transform.eulerAngles);
 
         if (movementValue != Vector3.zero)
             Move();
@@ -33,7 +40,10 @@ public class PlayerMovement : MonoBehaviour
 
     private void Move()
     {
-        rb.AddTorque(movementTorque);
+        Debug.Log(rb.angularVelocity.magnitude);
+
+        if (rb.angularVelocity.magnitude < .2f)
+            rb.AddTorque(movementTorque, ForceMode.Force);
     }
 
     private void Movement(Vector3 value)
