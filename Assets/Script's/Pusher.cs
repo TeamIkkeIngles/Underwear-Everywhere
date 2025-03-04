@@ -4,7 +4,7 @@ using UnityEngine;
 public class Pusher : MonoBehaviour
 {
     Allways allways;
-    public int PushUpPower = 3;
+    public int PushUpPower = 4;
 
     void Start()
     {

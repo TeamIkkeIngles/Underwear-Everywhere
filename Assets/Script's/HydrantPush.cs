@@ -1,10 +1,10 @@
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Pusher : MonoBehaviour
+public class HydrantPusher : MonoBehaviour
 {
     Allways allways;
-    public int PushUpPower = 3;
+    public int PushUpPower = 5;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
