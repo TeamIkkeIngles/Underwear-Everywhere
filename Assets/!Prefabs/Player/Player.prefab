@@ -824,10 +824,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentSpeed: 0
   cloth: {fileID: 707736605864668965}
+  initialBoost: 10
   movementSpeed: 30
   thrustSpeed:
     min: 3
-    max: 400
+    max: 200
   ThrustMultiplier: 200
   DragFactor: 1
   MinDrag: 0.5
