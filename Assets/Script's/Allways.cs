@@ -4,7 +4,7 @@ public class Allways : MonoBehaviour
 {
     public float speed;
     public float RotasionSensitivitet = 2;
-    public float PushPower = 10;
+    public float PushPower = 1;
 
     private Rigidbody _rigidbody;
 
@@ -24,5 +24,10 @@ public class Allways : MonoBehaviour
     {
         _rigidbody.AddForce(Vector3.up * force, ForceMode.Impulse);
 
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        Destroy(gameObject);
     }
 }
