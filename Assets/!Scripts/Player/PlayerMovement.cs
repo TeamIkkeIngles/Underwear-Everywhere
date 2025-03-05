@@ -58,12 +58,14 @@ public class PlayerMovement : MonoBehaviour
         float offsetMappedPitch = Mathf.Cos(pitchInRads) * drag;
         float acceleration = transform.forward.y < 0? HighPercent : LowPercent;
 
-        Debug.Log(mappedPitch);
-
         Vector3 speed = Vector3.forward * currentSpeed;
+        float toAccelerate = mappedPitch * acceleration * Time.fixedDeltaTime;
 
-        currentSpeed += mappedPitch * acceleration * Time.fixedDeltaTime;
+        currentSpeed += Mathf.Clamp(-toAccelerate, -10, 10);
         currentSpeed = Mathf.Clamp(currentSpeed, 0, thrustSpeed.max);
+
+        Debug.Log(Mathf.Clamp(-toAccelerate, -50, 10));
+
 
         cloth.externalAcceleration = -rb.linearVelocity;
 

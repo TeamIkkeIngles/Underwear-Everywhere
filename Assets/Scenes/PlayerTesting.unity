@@ -1549,9 +1549,29 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 546924453695126376, guid: 5b98bd1283f279b458378a99f4ca5938, type: 3}
+      propertyPath: Orbits.Top.Radius
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 546924453695126376, guid: 5b98bd1283f279b458378a99f4ca5938, type: 3}
+      propertyPath: Orbits.Bottom.Radius
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4375332236497161687, guid: 5b98bd1283f279b458378a99f4ca5938, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4375332236497161687, guid: 5b98bd1283f279b458378a99f4ca5938, type: 3}
+      propertyPath: thrustSpeed.max
+      value: 200
+      objectReference: {fileID: 0}
     - target: {fileID: 5180152293481985610, guid: 5b98bd1283f279b458378a99f4ca5938, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 5560419216582060891, guid: 5b98bd1283f279b458378a99f4ca5938, type: 3}
+      propertyPath: m_Drag
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7021649516004894896, guid: 5b98bd1283f279b458378a99f4ca5938, type: 3}
       propertyPath: m_LocalPosition.x
