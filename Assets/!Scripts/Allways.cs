@@ -1,28 +1,35 @@
+using System.Collections;
 using UnityEngine;
 
 public class Allways : MonoBehaviour
 {
-    public float speed;
-    public float RotasionSensitivitet = 2;
-    public float PushPower = 10;
+    public Gameover Gameover;
+    public float Health;
+    public Cameramaneger cameramaneger;
+    public bool isDead;
 
-    private Rigidbody _rigidbody;
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        _rigidbody = gameObject.GetComponent<Rigidbody>();
-        speed = -5.0f;
+        Health = 1f;
+        isDead = false;
     }
+
 
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector3.forward * speed * Time.deltaTime);
-    }
-   public void pushup(int force)
-    {
-        _rigidbody.AddForce(Vector3.up * force, ForceMode.Impulse);
+        if (isDead) return;
 
+        if (Health <= 0f && !isDead)
+        {
+            Gameover.GameOver();
+            isDead = true;
+        }
+
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        Health = 0f;
     }
 }
