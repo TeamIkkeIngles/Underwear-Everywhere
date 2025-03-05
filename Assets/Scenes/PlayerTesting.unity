@@ -280,6 +280,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: WindBlower (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7222015445578066750, guid: 7ba132a833282a94f9ccde2aecb9075b, type: 3}
+      propertyPath: timer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7222015445578066750, guid: 7ba132a833282a94f9ccde2aecb9075b, type: 3}
+      propertyPath: particle
+      value: 
+      objectReference: {fileID: 1931106576}
+    - target: {fileID: 7222015445578066750, guid: 7ba132a833282a94f9ccde2aecb9075b, type: 3}
+      propertyPath: useTimer
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1667,6 +1679,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 506206276}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1931106576 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3341478384867279601, guid: 7ba132a833282a94f9ccde2aecb9075b, type: 3}
+  m_PrefabInstance: {fileID: 345218772}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2052623429
 GameObject:
   m_ObjectHideFlags: 0
