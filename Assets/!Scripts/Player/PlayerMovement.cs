@@ -25,10 +25,10 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] MinMax thrustSpeed;
     [SerializeField] float ThrustMultiplier;
     [SerializeField] float DragFactor;
-    [SerializeField] float MinDrag;
     [SerializeField] float RotationSpeed;
     [SerializeField] float TiltStrength = 90;
     [SerializeField] float LowPercent = 0.1f, HighPercent = 1;
+    [SerializeField] float speedLoss;
 
     private void Start()
     {
@@ -36,7 +36,7 @@ public class PlayerMovement : MonoBehaviour
 
         cameraTransform = Camera.main.transform;
 
-        currentSpeed = thrustSpeed.max / 4;
+        currentSpeed = thrustSpeed.max / 10;
         rb.AddRelativeForce(Vector3.forward * currentSpeed, ForceMode.Impulse);
     }
 
@@ -75,17 +75,19 @@ public class PlayerMovement : MonoBehaviour
         {
             currentSpeed = 0;
         }
+
+        currentSpeed -= speedLoss * Time.fixedDeltaTime;
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        currentSpeed -= 100;
-    }
+    //private void OnCollisionEnter(Collision collision)
+    //{
+    //    currentSpeed -= 100;
+    //}
 
-    private void OnCollisionStay(Collision collision)
-    {
-        currentSpeed -= 10 * Time.deltaTime;
-    }
+    //private void OnCollisionStay(Collision collision)
+    //{
+    //    currentSpeed -= 10 * Time.deltaTime;
+    //}
 
     private void ManageRotation()
     {

@@ -2106,6 +2106,18 @@ PrefabInstance:
       value: 132
       objectReference: {fileID: 0}
     - target: {fileID: 4375332236497161687, guid: 5b98bd1283f279b458378a99f4ca5938, type: 3}
+      propertyPath: speedLoss
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4375332236497161687, guid: 5b98bd1283f279b458378a99f4ca5938, type: 3}
+      propertyPath: DragFactor
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4375332236497161687, guid: 5b98bd1283f279b458378a99f4ca5938, type: 3}
+      propertyPath: LowPercent
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4375332236497161687, guid: 5b98bd1283f279b458378a99f4ca5938, type: 3}
       propertyPath: TiltStrength
       value: 1
       objectReference: {fileID: 0}
@@ -2114,8 +2126,16 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4375332236497161687, guid: 5b98bd1283f279b458378a99f4ca5938, type: 3}
+      propertyPath: movementSpeed
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 4375332236497161687, guid: 5b98bd1283f279b458378a99f4ca5938, type: 3}
       propertyPath: thrustSpeed.max
       value: 400
+      objectReference: {fileID: 0}
+    - target: {fileID: 4375332236497161687, guid: 5b98bd1283f279b458378a99f4ca5938, type: 3}
+      propertyPath: ThrustMultiplier
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 5180152293481985610, guid: 5b98bd1283f279b458378a99f4ca5938, type: 3}
       propertyPath: m_Name
