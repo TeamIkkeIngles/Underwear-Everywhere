@@ -36,8 +36,8 @@ public class PlayerMovement : MonoBehaviour
 
         cameraTransform = Camera.main.transform;
 
-        currentSpeed = thrustSpeed.max / 10;
-        rb.AddRelativeForce(Vector3.forward * currentSpeed, ForceMode.Impulse);
+        //currentSpeed = thrustSpeed.max / 10;
+        //rb.AddRelativeForce(Vector3.forward * currentSpeed, ForceMode.Impulse);
         drag = rb.linearDamping;
     }
 
@@ -71,7 +71,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (rb.linearVelocity.magnitude >= thrustSpeed.min)
         {
-            rb.AddRelativeForce(speed);
+            rb.AddRelativeForce(speed, ForceMode.Acceleration);
             rb.linearDamping = Mathf.Abs(offsetMappedPitch);
         }
         else
