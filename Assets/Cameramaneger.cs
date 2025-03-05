@@ -20,7 +20,9 @@ public class Cameramaneger : MonoBehaviour
     void Update()
     {
         if (allways.isDead)
-        PlayerCam.Priority = 0;
-        GameOverCam.Priority = 10;
+        {
+            PlayerCam.Priority = 0;
+            GameOverCam.Priority = 10;
+        }
     }
 }

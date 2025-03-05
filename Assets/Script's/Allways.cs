@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Allways : MonoBehaviour
@@ -10,6 +11,7 @@ public class Allways : MonoBehaviour
     public Gameover Gameover;
     public float Health;
     public Cameramaneger cameramaneger;
+    public float freezeTime = 2f;
 
     private Rigidbody _rigidbody;
     public bool isDead;
@@ -20,7 +22,21 @@ public class Allways : MonoBehaviour
         speed = -5.0f;
         Health = 1f;
         isDead = false;
+        StartCoroutine(FreezeTemporarily());
     }
+
+    IEnumerator FreezeTemporarily()
+    {
+        // Frys objektet
+        _rigidbody.isKinematic = true;
+
+        // Vent i freezeTime sekunder
+        yield return new WaitForSeconds(freezeTime);
+
+        // Slipp objektet løs igjen
+        _rigidbody.isKinematic = false;
+    }
+
 
     // Update is called once per frame
     void Update()
