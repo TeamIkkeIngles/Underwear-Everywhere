@@ -3,19 +3,17 @@ using UnityEngine;
 
 public class Pusher : MonoBehaviour
 {
-    Allways allways;
-    public int PushUpPower = 4;
+    public int PushUpPower;
 
     void Start()
     {
-        allways = (Allways)FindAnyObjectByType(typeof(Allways));
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            allways.pushup(PushUpPower);
+            // TODO: use function from Torje
             Debug.Log("triggered");
         }
     }
