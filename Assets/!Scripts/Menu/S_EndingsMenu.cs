@@ -13,7 +13,6 @@ public class S_EndingsMenu : MonoBehaviour
 
     private void Start()
     {
-        PlayerPrefs.SetInt("Ending_1", 1);
 
         videoPlayer.loopPointReached += OnVideoFinished;
         UpdateEndingsUI();

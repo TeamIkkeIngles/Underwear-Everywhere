@@ -1013,7 +1013,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 8792c1429e492ac46a87ef61079926f3, type: 3}
   - {fileID: 21300000, guid: 8f69d58073e2f1f4cb4430469fb5f6e2, type: 3}
   - {fileID: 21300000, guid: 2f0fb14d2e70bec4a8c01946a34ae6b7, type: 3}
-  videoUI: {fileID: 0}
+  videoUI: {fileID: 805685016}
 --- !u!1 &805685016
 GameObject:
   m_ObjectHideFlags: 0
@@ -1026,6 +1026,7 @@ GameObject:
   - component: {fileID: 805685019}
   - component: {fileID: 805685018}
   - component: {fileID: 805685017}
+  - component: {fileID: 805685021}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1120,6 +1121,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &805685021
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 805685016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa6b97fc15b370e4b9f0ce9d897d14be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  videoPlayer: {fileID: 404134613}
+  videoUI: {fileID: 133607476}
 --- !u!1 &928378108
 GameObject:
   m_ObjectHideFlags: 0
