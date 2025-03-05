@@ -21,6 +21,7 @@ public class Cameramaneger : MonoBehaviour
     {
         if (allways.isDead)
         {
+            Cursor.lockState = CursorLockMode.Confined;
             PlayerCam.Priority = 0;
             GameOverCam.Priority = 10;
         }

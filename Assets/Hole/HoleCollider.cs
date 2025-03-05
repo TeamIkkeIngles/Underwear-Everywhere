@@ -3,13 +3,15 @@ using UnityEngine;
 
 public class HoleCollider : MonoBehaviour
 {
-    public Collider targetCollider;
+    public Collider[] targetCollider;
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            targetCollider.enabled = false;
+            foreach (Collider c in targetCollider) {
+                c.enabled = false;
+            }
         }
     }
 
@@ -17,7 +19,10 @@ public class HoleCollider : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            targetCollider.enabled = true;
+            foreach (Collider c in targetCollider)
+            {
+                c.enabled = true;
+            }
         }
     }
 }
