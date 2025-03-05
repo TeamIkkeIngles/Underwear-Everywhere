@@ -13,6 +13,8 @@ public class LeftandRightmovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (allways.isDead) return;
+
         if (Input.GetKey(KeyCode.A)) // Right movment
             transform.Rotate(Vector3.down * allways.RotasionSensitivitet);
 

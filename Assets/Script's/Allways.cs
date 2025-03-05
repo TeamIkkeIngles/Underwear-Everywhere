@@ -7,19 +7,26 @@ public class Allways : MonoBehaviour
     public float PushPower = 1;
     public float rotationSpeed = -5f;
     public Down_movment down_Movment;
+    public Gameover Gameover;
+    public float Health;
+    public Cameramaneger cameramaneger;
 
     private Rigidbody _rigidbody;
+    public bool isDead;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         _rigidbody = gameObject.GetComponent<Rigidbody>();
         speed = -5.0f;
+        Health = 1f;
+        isDead = false;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (isDead) return;
+
         Vector3 currentRotation = transform.eulerAngles;
 
         transform.Translate(Vector3.forward * speed * Time.deltaTime);
@@ -27,15 +34,22 @@ public class Allways : MonoBehaviour
         if (Input.GetKey(KeyCode.P))
             currentRotation.z = 0f;
         else currentRotation.z = 0f;
-    }
-   public void pushup(int force)
-    {
-        _rigidbody.AddForce(Vector3.up * force, ForceMode.Impulse);
+
+        if (Health <= 0f && !isDead)
+        {
+            Gameover.GameOver();
+            isDead = true;
+        }
 
     }
+   public void pushup(int force)
+   {
+        _rigidbody.AddForce(Vector3.up * force, ForceMode.Impulse);
+
+   }
 
     private void OnCollisionEnter(Collision collision)
     {
-        Destroy(gameObject);
+        Health = 0f;
     }
 }

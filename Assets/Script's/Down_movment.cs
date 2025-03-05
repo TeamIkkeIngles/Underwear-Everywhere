@@ -14,6 +14,8 @@ public class Down_movment : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (allways.isDead) return;
+
         Vector3 currentRotation = transform.eulerAngles;
 
         if (Input.GetKey(KeyCode.S))
