@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Gameover : MonoBehaviour
 {
-    public Allways allways;
+    public PlayerInfo allways;
     public GameObject gameOverScreen;
     public Canvas canvas;
 

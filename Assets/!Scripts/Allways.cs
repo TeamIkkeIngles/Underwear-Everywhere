@@ -1,7 +1,6 @@
-using System.Collections;
 using UnityEngine;
 
-public class Allways : MonoBehaviour
+public class PlayerInfo : MonoBehaviour
 {
     public Gameover Gameover;
     public float Health;
@@ -32,4 +31,5 @@ public class Allways : MonoBehaviour
     {
         Health = 0f;
     }
+
 }

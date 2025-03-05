@@ -4,7 +4,7 @@ using UnityEngine;
 public class Cameramaneger : MonoBehaviour
 
 {
-    public Allways allways;
+    public PlayerInfo allways;
     public CinemachineCamera PlayerCam;
     public CinemachineCamera GameOverCam;
 

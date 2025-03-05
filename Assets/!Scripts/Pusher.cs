@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class Pusher : MonoBehaviour
 {
+    PlayerInfo playerInfo;
     public int PushUpPower;
 
     void Start()
@@ -13,8 +14,14 @@ public class Pusher : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            // TODO: use function from Torje
+            pushup(PushUpPower);
             Debug.Log("triggered");
         }
+    }
+
+    public void pushup(int force)
+    {
+        Player.instance.rb.AddForce(Vector3.up * force, ForceMode.Impulse);
+
     }
 }
