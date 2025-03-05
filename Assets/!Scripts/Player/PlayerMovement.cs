@@ -13,6 +13,9 @@ public class PlayerMovement : MonoBehaviour
     [NaughtyAttributes.ReadOnly, SerializeField] private float currentSpeed;
     Vector3 movementValue;
     float tiltValue, lerpValue;
+    float drag;
+    float LowPercent => 0.1f;
+    float HighPercent => 1;
 
     Transform cameraTransform;
 
@@ -21,13 +24,10 @@ public class PlayerMovement : MonoBehaviour
 
     [Space]
 
-    [SerializeField] float movementSpeed = 30;
     [SerializeField] MinMax thrustSpeed;
     [SerializeField] float ThrustMultiplier;
-    [SerializeField] float DragFactor;
     [SerializeField] float RotationSpeed;
-    [SerializeField] float TiltStrength = 90;
-    [SerializeField] float LowPercent = 0.1f, HighPercent = 1;
+    [SerializeField] float TiltStrength = 1;
     [SerializeField] float speedLoss;
 
     private void Start()
@@ -38,6 +38,7 @@ public class PlayerMovement : MonoBehaviour
 
         currentSpeed = thrustSpeed.max / 10;
         rb.AddRelativeForce(Vector3.forward * currentSpeed, ForceMode.Impulse);
+        drag = rb.linearDamping;
     }
 
     private void Update()
@@ -53,9 +54,11 @@ public class PlayerMovement : MonoBehaviour
     private void Move()
     {
         float pitchInRads = transform.eulerAngles.x * Mathf.Rad2Deg;
-        float mappedPitch = -Mathf.Sin(pitchInRads) * ThrustMultiplier;
-        float offsetMappedPitch = Mathf.Cos(pitchInRads) * DragFactor;
-        float acceleration = transform.eulerAngles.x % 360 >= 300? LowPercent : HighPercent;
+        float mappedPitch = Mathf.Sin(pitchInRads) * ThrustMultiplier;
+        float offsetMappedPitch = Mathf.Cos(pitchInRads) * drag;
+        float acceleration = transform.forward.y < 0? HighPercent : LowPercent;
+
+        Debug.Log(mappedPitch);
 
         Vector3 speed = Vector3.forward * currentSpeed;
 
@@ -79,15 +82,15 @@ public class PlayerMovement : MonoBehaviour
         currentSpeed -= speedLoss * Time.fixedDeltaTime;
     }
 
-    //private void OnCollisionEnter(Collision collision)
-    //{
-    //    currentSpeed -= 100;
-    //}
+    private void OnCollisionEnter(Collision collision)
+    {
+        currentSpeed /= 2;
+    }
 
-    //private void OnCollisionStay(Collision collision)
-    //{
-    //    currentSpeed -= 10 * Time.deltaTime;
-    //}
+    private void OnCollisionStay(Collision collision)
+    {
+        currentSpeed -= 10 * Time.deltaTime;
+    }
 
     private void ManageRotation()
     {
