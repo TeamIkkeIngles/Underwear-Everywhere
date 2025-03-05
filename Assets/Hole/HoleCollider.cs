@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class HoleCollider : MonoBehaviour
 {
-    [SerializeField] private Collider targetCollider;
+    public Collider targetCollider;
 
     private void OnTriggerEnter(Collider other)
     {
