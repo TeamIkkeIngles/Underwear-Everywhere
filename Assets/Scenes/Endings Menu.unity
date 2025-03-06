@@ -561,7 +561,7 @@ GameObject:
   - component: {fileID: 133607479}
   - component: {fileID: 133607478}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: Video UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1013,7 +1013,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 8792c1429e492ac46a87ef61079926f3, type: 3}
   - {fileID: 21300000, guid: 8f69d58073e2f1f4cb4430469fb5f6e2, type: 3}
   - {fileID: 21300000, guid: 2f0fb14d2e70bec4a8c01946a34ae6b7, type: 3}
-  videoUI: {fileID: 805685016}
+  videoUI: {fileID: 133607476}
 --- !u!1 &805685016
 GameObject:
   m_ObjectHideFlags: 0

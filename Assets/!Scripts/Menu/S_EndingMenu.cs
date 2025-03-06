@@ -35,6 +35,6 @@ public class S_EndingMenu : MonoBehaviour
     private void ExitVideo()
     {
         videoUI.SetActive(false);
-        SceneManager.LoadScene("MainMenu"); // Change to your main menu or another scene
+        Cursor.lockState = CursorLockMode.Confined;
     }
 }
