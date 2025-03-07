@@ -10,6 +10,7 @@ public class S_EndingMenu : MonoBehaviour
 
     private void Start()
     {
+        videoUI.SetActive(false);
         string videoPath = PlayerPrefs.GetString("CurrentEndingVideo", "");
         PlayerPrefs.DeleteKey("CurrentEndingVideo");
         if (!string.IsNullOrEmpty(videoPath))
